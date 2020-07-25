@@ -34,8 +34,18 @@ sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git
 
 本套代码保证肯定可以编译成功。里面包括了 R20 所有源代码，包括 IPK 的。
 
+***
+**快速使用**
+先输入
+```bash
+sudo apt-get update && sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf && git clone https://github.com/coolsnowwolf/lede && cd lede && ./scripts/feeds update -a && ./scripts/feeds install -a && make menuconfig
+```
+好了以后输入 `make -j8 download V=s && make -j1 V=s` 
+***
+
+
 你可以自由使用，但源码编译二次发布请注明我的 GitHub 仓库链接。谢谢合作！
-=
+
 
 二次编译：
 ```bash
