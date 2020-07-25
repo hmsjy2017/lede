@@ -239,3 +239,19 @@ jobs:
         with:
           name: OpenWrt_firmware
           path: ./bin/targets/
+      
+      #以下为自定义内容，用于上传固件到release，如无法使用，须删去
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@main
+        continue-on-error: true
+        if: env.REPO_TOKEN && env.UPLOAD_FIRMWARE_FOR_RELEASE == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+        with:
+          tag_name: ${{ env.date }}_${{ env.DEVICE_NAME }}
+          release_name: ${{ env.date2 }} ${{ env.DEVICE_NAME }} ${{ env.EMOJI }}
+          body: |
+            请在「系统」-「备份/升级」-「刷写新的固件」中更新固件。
+          draft: false
+          prerelease: false
